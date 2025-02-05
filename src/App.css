@@ -1,0 +1,487 @@
+/* ライトテーマのデフォルト変数 */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #000000;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --accent-color: #1a73e8;
+    --hover-color: #f0f0f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    /* カレンダー専用カラー */
+    --calendar-bg: #ffffff;
+    --calendar-cell-bg: #f8f9fa;
+    --calendar-other-month-bg: #f5f5f5;
+    --calendar-hover-bg: #f0f0f0;
+    --calendar-selected-bg: #1a73e8;
+    --calendar-other-month-text: #999999;
+}
+
+/* ダークテーマの変数 */
+[data-theme='dark'] {
+    --bg-primary: #000000;
+    --bg-secondary: #070707;
+    --text-primary: #ffffff;
+    --text-secondary: #999999;
+    --border-color: #1f1f1f;
+    --accent-color: #4d90fe;
+    --hover-color: #0f0f0f;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+    /* カレンダー専用カラー */
+    --calendar-bg: #121212;
+    --calendar-cell-bg: #1e1e1e;
+    --calendar-other-month-bg: #151515;
+    --calendar-hover-bg: #2d2d2d;
+    --calendar-selected-bg: #4d90fe;
+    --calendar-other-month-text: #666666;
+}
+
+.app {
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.app-header {
+    background-color: var(--bg-secondary);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-left h1 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.view-select {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-secondary);
+}
+
+.add-class-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.app-content {
+    display: flex;
+    min-height: calc(100vh - 64px);
+}
+
+.sidebar {
+    width: 240px;
+    min-width: 240px;
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-right: 1px solid var(--border-color);
+}
+
+.user-info {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.user-avatar {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.user-details {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.user-name {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-item {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.nav-item:hover {
+    background-color: var(--hover-color);
+}
+
+.nav-item.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.main-content {
+    flex: 1;
+    padding: 1.5rem;
+    overflow: auto;
+}
+
+.calendar {
+    width: 92%;
+    height: 92%;
+    margin: 0 auto;
+    background: var(--calendar-bg);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px var(--shadow-color);
+    padding: 0.75rem;
+}
+
+.calendar-grid {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--calendar-bg);
+}
+
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: var(--calendar-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.calendar-header-cell {
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.month-view {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: var(--bg-secondary);
+}
+
+.day-cell {
+    position: relative;
+    min-height: 82px;
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.4rem;
+    background-color: var(--calendar-cell-bg);
+    transition: all 0.2s;
+}
+
+.day-cell:hover {
+    background-color: var(--calendar-hover-bg);
+}
+
+.day-cell.selected {
+    background-color: var(--calendar-selected-bg);
+}
+
+.day-cell.selected .day-number {
+    color: white;
+}
+
+.day-cell.other-month {
+    background-color: var(--calendar-other-month-bg);
+}
+
+.day-cell.other-month .day-number {
+    color: var(--calendar-other-month-text);
+    opacity: 0.7;
+}
+
+.day-cell.other-month:hover {
+    background-color: var(--calendar-hover-bg);
+}
+
+.day-cell:nth-child(7n) {
+    border-right: none;
+}
+
+.day-cell:last-child {
+    border-bottom: none;
+}
+
+.day-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.day-number {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+}
+
+.schedule-item {
+    padding: 0.2rem 0.4rem;
+    margin: 0.1rem 0;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.9;
+}
+
+.schedule-container {
+    border-left: 1px solid var(--border-color);
+    padding-left: 20px;
+}
+
+.calendar-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.calendar-navigation button {
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.calendar-navigation button:hover {
+    opacity: 0.85;
+}
+
+.calendar-navigation h2 {
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.week-view {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.day-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.day-name {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+.day-cell.other-month .day-number {
+    color: var(--text-secondary);
+}
+
+h2 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.schedule {
+    margin-top: 20px;
+    border-top: 2px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.edit-button {
+    padding: 8px 16px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: var(--hover-color);
+}
+
+.schedule-view {
+    padding: 20px;
+}
+
+.schedule-view-item {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+}
+
+.schedule-view-item .period {
+    font-weight: bold;
+    color: var(--text-secondary);
+    width: 60px;
+}
+
+.schedule-view-item .subject {
+    color: var(--text-primary);
+}
+
+/* タブレット向け (768px以下) */
+@media screen and (max-width: 768px) {
+    .app-content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .user-avatar {
+        margin-bottom: 0;
+        margin-right: 1rem;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .nav-item {
+        width: auto;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    .calendar-header-cell {
+        padding: 0.5rem;
+    }
+
+    .day-cell {
+        min-height: 100px;
+    }
+}
+
+/* モバイル向け (480px以下) */
+@media screen and (max-width: 480px) {
+    .app-header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+
+    .nav-item {
+        white-space: nowrap;
+    }
+
+    .calendar-navigation {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .day-cell {
+        min-height: 65px;
+        padding: 0.2rem;
+    }
+
+    .schedule-item {
+        font-size: 0.65rem;
+        padding: 0.1rem 0.2rem;
+    }
+
+    .day-number {
+        font-size: 0.9em;
+    }
+
+    /* カレンダーのヘッダーを省略表示 */
+    .calendar-header-cell {
+        padding: 0.25rem;
+        font-size: 0.75rem;
+    }
+
+    .calendar {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* 印刷用スタイル */
+@media print {
+    .sidebar,
+    .app-header {
+        display: none;
+    }
+
+    .app-content {
+        display: block;
+    }
+
+    .main-content {
+        padding: 0;
+    }
+
+    .calendar {
+        box-shadow: none;
+    }
+} 

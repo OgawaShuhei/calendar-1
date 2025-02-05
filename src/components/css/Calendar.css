@@ -1,0 +1,321 @@
+.calendar {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.calendar-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-navigation button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.calendar-navigation button:hover {
+    background-color: #45a049;
+}
+
+.calendar-grid {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #f5f5f5;
+}
+
+.calendar-header-cell {
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    color: #666;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.month-view {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day-cell {
+    position: relative;
+    min-height: 100px;
+    border-right: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.day-cell:nth-child(7n) {
+    border-right: none;
+}
+
+.day-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.day-number {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #333;
+}
+
+.day-cell.other-month {
+    background-color: #f9f9f9;
+}
+
+.day-cell.other-month .day-number {
+    color: #999;
+}
+
+.day-cell.selected {
+    background-color: #e3f2fd;
+}
+
+.day-cell.today {
+    background-color: #fff3e0;
+}
+
+.day-cell:hover {
+    background-color: #f5f5f5;
+}
+
+.day-schedule {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.schedule-item {
+    padding: 4px 8px;
+    margin: 2px 0;
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* 数学の授業用のスタイル */
+.schedule-item.math {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+}
+
+/* 英語の授業用のスタイル */
+.schedule-item.english {
+    background-color: #e6f4ea;
+    color: #137333;
+}
+
+.schedule-item.special {
+    background-color: #ff4081;  /* 特別講義用の色 */
+    opacity: 0.9;
+}
+
+.schedule-item.special::before {
+    content: '🌟';  /* 特別講義用のアイコン */
+    margin-right: 4px;
+}
+
+.more-indicator {
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+}
+
+/* スケジュール詳細モーダルのスタイル */
+.schedule-detail-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.schedule-detail-content {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.schedule-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.schedule-detail-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.schedule-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.schedule-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.schedule-detail-item.special {
+    border-color: var(--accent-color);
+    background-color: rgba(255, 64, 129, 0.1);
+}
+
+.schedule-time {
+    min-width: 100px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.schedule-duration {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-left: 0.5rem;
+}
+
+.schedule-subject {
+    flex: 1;
+    color: var(--text-primary);
+}
+
+.special-badge {
+    padding: 0.25rem 0.5rem;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.no-schedule {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 2rem;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.close-button:hover {
+    color: var(--text-primary);
+}
+
+/* 既存のスタイルに追加 */
+.schedule-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.edit-button,
+.delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    opacity: 1;
+}
+
+.schedule-edit-form {
+    padding: 1rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.edit-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.edit-form-group label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.edit-form-group input,
+.edit-form-group select {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.edit-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.edit-form-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.edit-form-actions .save-button {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.edit-form-actions .cancel-button {
+    background-color: var(--hover-color);
+    color: var(--text-secondary);
+} 
